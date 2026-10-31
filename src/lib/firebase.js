@@ -9,20 +9,31 @@ import { getAuth } from "firebase/auth";
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyAy91HRB_Qh5KEpigOQg6FcTz2RoOu_y0M",
-  authDomain: "pokemon-5dfc6.firebaseapp.com",
-  databaseURL: "https://pokemon-5dfc6-default-rtdb.firebaseio.com",
-  projectId: "pokemon-5dfc6",
-  storageBucket: "pokemon-5dfc6.firebasestorage.app",
-  messagingSenderId: "871489754206",
-  appId: "1:871489754206:web:706f940c8f957fa08f90cf",
-  measurementId: "G-SVNPR7S470",
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  databaseURL: import.meta.env.VITE_FIREBASE_DATABASE_URL,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
 };
+
+const missingConfig = Object.entries(firebaseConfig)
+  .filter(([key, value]) => key !== "measurementId" && !value)
+  .map(([key]) => key);
+
+if (missingConfig.length > 0) {
+  throw new Error(
+    `Missing Firebase configuration: ${missingConfig.join(
+      ", ",
+    )}. Add these values to .env.local.`,
+  );
+}
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+getAnalytics(app);
 export const db = getDatabase(app);
 export const auth = getAuth(app);

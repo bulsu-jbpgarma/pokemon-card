@@ -2,6 +2,12 @@
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
+## Firebase configuration
+
+The app reads Firebase settings from Vite environment variables. Run `Copy-Item .env.example .env.local`, replace the placeholder values with your Firebase web app configuration, then run `npm run dev`. `.env.local` is ignored by Git; do not commit it.
+
+Values prefixed with `VITE_` are included in the client-side app, so do not put private credentials in them. Protect Firebase data with Firebase Security Rules.
+
 Currently, two official plugins are available:
 
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
