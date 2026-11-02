@@ -122,7 +122,7 @@ export const addPokemon = async (
 
 export const getPokemon = (callback) => {
   try {
-    onValue(pokemonReference, (snapshot) => {
+    return onValue(pokemonReference, (snapshot) => {
       const pokemonArray = [];
       snapshot.forEach((snap) => {
         const pokemonData = snap.val();

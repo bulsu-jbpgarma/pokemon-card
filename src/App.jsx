@@ -6,6 +6,7 @@ import AddPokemon from "./pages/PokemonAdd.jsx";
 import EditPokemon from "./pages/EditPokemon.jsx";
 import { Routes, Route } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
+import ProtectedRoute from "./components/ProtectedRoute.jsx";
 
 function App() {
   return (
@@ -14,9 +15,30 @@ function App() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/add" element={<AddPokemon />} />
-        <Route path="/edit/:id" element={<EditPokemon />} />
+        <Route
+          path="/home"
+          element={
+            <ProtectedRoute>
+              <Home />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/add"
+          element={
+            <ProtectedRoute>
+              <AddPokemon />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/edit/:id"
+          element={
+            <ProtectedRoute>
+              <EditPokemon />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </>
   );
