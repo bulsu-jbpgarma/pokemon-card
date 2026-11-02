@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { Plus } from "lucide-react";
@@ -68,6 +69,9 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-muted/40">
+      <Helmet>
+        <title>Pokémon Collection</title>
+      </Helmet>
       <Navbar />
 
       <main className="mx-auto max-w-6xl space-y-6 px-4 py-8 sm:px-6">

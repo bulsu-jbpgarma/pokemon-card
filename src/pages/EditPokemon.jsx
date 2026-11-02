@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import toast from "react-hot-toast";
 import { ChevronLeft } from "lucide-react";
@@ -47,6 +48,9 @@ export default function EditPokemon() {
 
   return (
     <div className="min-h-screen bg-muted/40">
+      <Helmet>
+        <title>Edit Pokémon</title>
+      </Helmet>
       <Navbar />
 
       <main className="mx-auto max-w-2xl space-y-6 px-4 py-8 sm:px-6">
