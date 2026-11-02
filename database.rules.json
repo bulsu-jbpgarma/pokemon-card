@@ -1,0 +1,9 @@
+{
+  "rules": {
+    "pokemon": {
+      ".read": "auth != null",
+      ".write": "auth != null",
+      ".indexOn": ["name"]
+    }
+  }
+}

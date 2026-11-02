@@ -8,6 +8,10 @@ The app reads Firebase settings from Vite environment variables. Run `Copy-Item 
 
 Values prefixed with `VITE_` are included in the client-side app, so do not put private credentials in them. Protect Firebase data with Firebase Security Rules.
 
+## Deploy Firebase Realtime Database rules
+
+The database rules are in `database.rules.json`. They require authentication to read or write Pokémon and index the `name` field used by the duplicate-name check. Deploy them with `firebase deploy --only database`.
+
 Currently, two official plugins are available:
 
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
