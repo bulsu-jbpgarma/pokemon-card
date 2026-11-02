@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
+import { Skeleton } from "@/components/ui/skeleton";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import toast from "react-hot-toast";
 import { ChevronLeft } from "lucide-react";
@@ -71,7 +72,11 @@ export default function EditPokemon() {
         </div>
 
         {isLoading && (
-          <p className="text-sm text-muted-foreground">Loading Pokémon...</p>
+          <div className="space-y-4">
+            <Skeleton className="h-10 w-full" />
+            <Skeleton className="h-10 w-full" />
+            <Skeleton className="h-24 w-full" />
+          </div>
         )}
 
         {!isLoading && !pokemon && (
